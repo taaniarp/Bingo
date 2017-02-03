@@ -4,26 +4,26 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
-public class Bombo {
+public class BallBlower {
 
-    private List <Integer> numerosEntregados = new ArrayList<>();
+    private List <Integer> deliveredNumbers = new ArrayList<>();
 
     public Integer entregarNum(){
 
         while (true) {
             int randomNum = ThreadLocalRandom.current().nextInt(0, 10);
 
-            if (!numerosEntregados.contains(randomNum)){
-                numerosEntregados.add(randomNum);
+            if (!deliveredNumbers.contains(randomNum)){
+                deliveredNumbers.add(randomNum);
                 return randomNum;
             }
         }
     }
 
-    public boolean quedanNum(){
+    public boolean numbersLeft(){
 
         for (int i = 0; i <10 ; i++) {
-            if (!numerosEntregados.contains(i)){
+            if (!deliveredNumbers.contains(i)){
                 return true;
             }
         }

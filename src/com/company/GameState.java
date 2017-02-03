@@ -4,19 +4,23 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class GameState {
 
-    private Integer numeroJugador1;
-    private Integer numeroJugador2;
+    private Integer player1Number;
+    private Integer player2Number;
 
-    //inicializa los num de los jugadores de manera aleatoria
+    public GameState() {
+        initPlayerNumbers();
+    }
+
+    //Starts the numbers of the players randomly
     public void initPlayerNumbers(){
 
-        this.numeroJugador1 = ThreadLocalRandom.current().nextInt(0, 10);
+        this.player1Number = ThreadLocalRandom.current().nextInt(0, 10);
 
         while (true) {
             int randomNum = ThreadLocalRandom.current().nextInt(0, 10);
 
-            if (randomNum != numeroJugador1){
-                this.numeroJugador2 = randomNum;
+            if (randomNum != player1Number){
+                this.player2Number = randomNum;
                 return;
             }
         }
@@ -25,10 +29,10 @@ public class GameState {
 
     public int checkNumber(int num) {
 
-        if (numeroJugador1 == num){
+        if (player1Number == num){
             return 1;
         }
-        else if(numeroJugador2 == num){
+        else if(player2Number == num){
             return 2;
         }
         else {
@@ -37,10 +41,10 @@ public class GameState {
     }
 
     public int getPlayer1Num(){
-        return numeroJugador1;
+        return player1Number;
     }
 
     public int getPlayer2Num(){
-        return numeroJugador2;
+        return player2Number;
     }
 }
