@@ -30,7 +30,7 @@ public class GameRunner {
 
         while (result == 0){
 
-            int num = ballBlower.entregarNum();
+            int num = ballBlower.deliveredNumbers();
             result = game.checkNumber(num);
 
             GamePrinter.printNumber(num);
