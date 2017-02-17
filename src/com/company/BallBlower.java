@@ -9,19 +9,17 @@ public class BallBlower {
 
     private List <Integer> numbers = new ArrayList<>();
 
+
     public BallBlower(){
         for (int i = 0; i < 10 ; i++) {
             numbers.add(i);
         }
         Collections.shuffle(numbers);
     }
-    public Integer deliveredNumbers(){
+
+    public Integer deliveredNumber(){
 
         return numbers.remove(numbers.size()-1);
     }
 
-    public boolean numbersLeft(){
-
-       return numbers.isEmpty();
-    }
 }

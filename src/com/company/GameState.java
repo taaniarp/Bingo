@@ -1,38 +1,49 @@
 package com.company;
 
-import java.util.concurrent.ThreadLocalRandom;
-
 public class GameState {
-
-    private Integer player1Number;
-    private Integer player2Number;
+    
+    private Line linePlayer1;
+    private Line linePlayer2;
 
     public GameState() {
-        initPlayerNumbers();
+        initPlayerLines();
     }
 
     //Starts the numbers of the players randomly
-    public void initPlayerNumbers(){
+    public void initPlayerLines(){
 
-        this.player1Number = ThreadLocalRandom.current().nextInt(0, 10);
+        this.linePlayer1 = new Line();
 
         while (true) {
-            int randomNum = ThreadLocalRandom.current().nextInt(0, 10);
-
-            if (randomNum != player1Number){
-                this.player2Number = randomNum;
-                return;
+            this.linePlayer2 = new Line();
+            if (!linePlayer1.equals(linePlayer2)){
+               break;
             }
         }
     }
 
+    public void checkNumber(int num) {
 
-    public int checkNumber(int num) {
+        if (linePlayer1.checkNumber(num)){
+        }
+        if(linePlayer2.checkNumber(num)){
+        }
+    }
 
-        if (player1Number == num){
+    public boolean isOver() {
+        if (linePlayer1.lineCompleted() || linePlayer2.lineCompleted()){
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+    public Integer getWinner(){
+        if (linePlayer1.lineCompleted()){
             return 1;
         }
-        else if(player2Number == num){
+        else if (linePlayer2.lineCompleted()){
             return 2;
         }
         else {
@@ -40,11 +51,9 @@ public class GameState {
         }
     }
 
-    public int getPlayer1Num(){
-        return player1Number;
-    }
+    public Line getLinePlayer1() {return linePlayer1;}
 
-    public int getPlayer2Num(){
-        return player2Number;
+    public Line getLinePlayer2() {
+        return linePlayer2;
     }
 }

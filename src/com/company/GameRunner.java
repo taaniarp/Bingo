@@ -21,23 +21,22 @@ public class GameRunner {
         String player1Name = GamePrinter.readName(1);
         String player2Name = GamePrinter.readName(2);
 
-        player1 = new Player(player1Name);
-        player2 = new Player(player2Name);
+        player1 = new Player(player1Name,1);
+        player2 = new Player(player2Name,2);
 
         GamePrinter.printPlayerNumbers(game, player1 , player2);
 
-        int result = 0;
+        while (!game.isOver()){
 
-        while (result == 0){
-
-            int num = ballBlower.deliveredNumbers();
-            result = game.checkNumber(num);
-
+            int num = ballBlower.deliveredNumber();
+            game.checkNumber(num);
             GamePrinter.printNumber(num);
+            GamePrinter.printMove(game, player1, player2);
+
 
         }
 
-        GamePrinter.printWinner(result, player1, player2);
+        GamePrinter.printWinner(game.getWinner(), player1, player2);
 
     }
 }

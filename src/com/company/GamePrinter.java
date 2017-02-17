@@ -22,8 +22,8 @@ public class GamePrinter {
 
     public static void printPlayerNumbers(GameState game, Player player1, Player player2){
 
-        System.out.println(player1.getName() + " the number you're gonna play with is: " + game.getPlayer1Num());
-        System.out.println(player2.getName() + " the number you're gonna play with is: " + game.getPlayer2Num());
+        System.out.println(player1.getName() + " the line you're gonna play with is: " + game.getLinePlayer1());
+        System.out.println(player2.getName() + " the line you're gonna play with is: " + game.getLinePlayer2());
 
     }
 
@@ -46,5 +46,10 @@ public class GamePrinter {
             System.out.println("The winner is " + player2.getName());
         }
 
+    }
+
+    public static void printMove(GameState game, Player player1, Player player2) {
+        System.out.println(player1.getName() + " the line you're playing with is: " +game.getLinePlayer1());
+        System.out.println(player2.getName()+ " the line you're playing with is: " + game.getLinePlayer2());
     }
 }
